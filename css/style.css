@@ -1,0 +1,619 @@
+/* Basic Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+/* The main background scene */
+#scene {
+  width: 1920px;
+  height: 1080px;
+  background-image: url('../images/1.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+}
+
+/* Welcome overlay */
+#welcome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  z-index: 1000;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.welcome-content h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.welcome-content span {
+  color: #f5e0ab;
+}
+
+.welcome-content p {
+  font-size: 1.3em;
+  margin-bottom: 25px;
+}
+
+#welcome button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  background-color: #f5e0ab;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#welcome button:hover {
+  background-color: #f3f3f3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fade transitions for background changes */
+.fade-out {
+  animation: fadeOut 0.4s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fade transitions */
+.fade-out {
+  animation: fadeOut 0.4s forwards;
+}
+.fade-in {
+  animation: fadeIn 0.6s forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Next button styling */
+.next-button {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  z-index: 20;
+}
+
+.next-button:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* Next and Previous button styling */
+.next-button,
+.prev-button {
+  position: absolute;
+  bottom: 40px;
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  z-index: 20;
+}
+
+.next-button {
+  right: 40px;
+}
+
+.prev-button {
+  left: 40px;
+}
+
+.next-button:hover,
+.prev-button:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* 🔘 Fullscreen Toggle Button */
+#fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#fullscreen-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+#fullscreen-btn:hover img {
+  transform: scale(1.1);
+}
+
+/* === 🟢 Top Left Menu Buttons (Scene 13) === */
+.top-left-buttons {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: flex;
+  gap: 5px; /* more breathing room */
+  z-index: 30;
+}
+
+.top-left-buttons img {
+  width: 115px;   /* bigger button size */
+  height: 115px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); /* soft shadow */
+}
+
+.top-left-buttons img:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+
+/* === 🟣 Top Right Column Buttons (Scene 13) === */
+.top-right-buttons {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* space between buttons */
+  z-index: 30;
+}
+
+.top-right-buttons img {
+  width: 115px;
+  height: 115px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.top-right-buttons img:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.character-cards-grid {
+  position: absolute;
+  top: 45%;          /* vertically center */
+  left: 1%;          /* distance from left edge */
+  transform: translateY(-50%); /* pull up by half height to truly center vertically */
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  column-gap: 0px;
+  justify-items: center; /* centers items in each grid cell */
+  align-items: center;
+  z-index: 25;
+}
+
+
+.character-cards-grid img {
+  width: 350px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.4));
+  margin-right: -100px; /* pulls images closer horizontally */
+}
+
+.character-cards-grid img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Center the bottom two cards under the top three */
+.character-cards-grid img:nth-child(4) {
+  grid-column: 1; /* center left of bottom row */
+}
+.character-cards-grid img:nth-child(5) {
+  grid-column: 2; /* center right of bottom row */
+}
+
+/* === 🟠 Bottom Left Buttons (Scene 13) === */
+.bottom-left-buttons {
+  position: absolute;
+  bottom: 35px;
+  left: 37px;
+  display: flex;
+  gap: 10px;
+  z-index: 30;
+}
+
+.bottom-left-buttons img {
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.bottom-left-buttons img:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* === 🟢 Lock-in Card (Right Side) === */
+.lockin-card {
+  position: absolute;
+  top: 48%;
+  right: 6%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: auto;
+  cursor: pointer;
+  z-index: 20;
+  transition: opacity 0.4s ease, transform 0.2s ease;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.4));
+}
+
+.lockin-card.fade-in {
+  opacity: 0;
+  transform: translateY(-50%) scale(1.05);
+  animation: fadeInLockin 0.4s ease forwards;
+}
+
+@keyframes fadeInLockin {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.lockin-card:hover {
+  transform: translateY(-50%) scale(1.05);
+  filter: brightness(1.1) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* === 🏠 Home Button (Bottom Right) === */
+.home-button {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  z-index: 30;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+.home-button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1) drop-shadow(0 6px 8px rgba(0, 0, 0, 0.6));
+}
+
+.top-left-buttons img {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.top-left-buttons img:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+/* Play Button (Page 18) */
+.play-button {
+  position: absolute;
+  bottom: 15%;
+  left: 20%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  z-index: 30;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+.play-button:hover {
+  transform: translateX(-50%) scale(1.1);
+  filter: brightness(1.1) drop-shadow(0 6px 8px rgba(0,0,0,0.6));
+}
+
+/* Container for grouped buttons */
+.button-group {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px; /* spacing between buttons */
+  z-index: 30;
+}
+
+/* OO and Hindi Buttons */
+.oo-button,
+.hindi-button {
+  width: 300px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+.oo-button:hover,
+.hindi-button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1) drop-shadow(0 6px 8px rgba(0,0,0,0.6));
+}
+
+.crossword-grid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 25;
+}
+
+.crossword-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.crossword-cell {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+}
+
+.crossword-input {
+  width: 90%;
+  height: 90%;
+  text-align: center;
+  font-size: 1.5em;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* 3 color buttons layout */
+.blue-button {
+  position: absolute;
+  left: 400px;   /* moved more to the left */
+  top: 800px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.yellow-button {
+  position: absolute;
+  left: 870px;   /* centered */
+  top: 800px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.red-button {
+  position: absolute;
+  left: 1390px;  /* moved further right */
+  top: 800px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.myhint-button {
+  position: absolute;
+  bottom: 50px;
+  left: 40px;
+  width: 180px;
+  cursor: pointer;
+  z-index: 500; /* Higher than buttons but below fullscreen overlays */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.myhint-button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* === First Buttons Layout (firstA, firstB, firstC) === */
+.firstA-button,
+.firstB-button,
+.firstC-button {
+  position: absolute;
+  width: 500px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover feedback */
+.firstA-button:hover,
+.firstB-button:hover,
+.firstC-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Individual positioning */
+.firstA-button {
+  left: 15%;  /* Move horizontally to desired spacing */
+  top: 35%;
+}
+
+.firstB-button {
+  left: 37%;
+  top: 50%;
+}
+
+.firstC-button {
+  left: 60%;
+  top: 35%;
+}
+
+
+/* === First Buttons Layout (firstA, firstB, firstC) === */
+.secondA-button,
+.secondB-button,
+.secondC-button {
+  position: absolute;
+  width: 500px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover feedback */
+.secondA-button:hover,
+.secondB-button:hover,
+.secondC-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Individual positioning */
+.secondA-button {
+  left: 15%;  /* Move horizontally to desired spacing */
+  top: 35%;
+}
+
+.secondB-button {
+  left: 37%;
+  top: 50%;
+}
+
+.secondC-button {
+  left: 60%;
+  top: 35%;
+}
+
+.thirdA-button,
+.thirdB-button,
+.thirdC-button {
+  position: absolute;
+  width: 500px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover feedback */
+.thirdA-button:hover,
+.thirdB-button:hover,
+.thirdC-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Individual positioning */
+.thirdA-button {
+  left: 15%;  /* Move horizontally to desired spacing */
+  top: 35%;
+}
+
+.thirdB-button {
+  left: 37%;
+  top: 50%;
+}
+
+.thirdC-button {
+  left: 60%;
+  top: 35%;
+}
+
+.kara-button,
+.rabbin-button,
+.maya-button,
+.kurt-button {
+  position: absolute;
+  top: 300px;         /* All aligned horizontally */
+  width: 600px;       /* Same size for all */
+  cursor: pointer;
+}
+
+/* Evenly spaced from left to right */
+.kara-button {
+  left: -200px;
+}
+
+.rabbin-button {
+  left: 350px;
+}
+
+.maya-button {
+  left: 350px;
+}
+
+.kurt-button {
+  left: 400px;
+}
+
+/* Evenly spaced from left to right */
+.kara-button { left: 0px; }
+.rabbin-button { left: 700px; }
+.maya-button { left: 700px; }
+.kurt-button { left: 350px; }
+
+/* ✨ Hover effect */
+.kara-button:hover,
+.rabbin-button:hover,
+.maya-button:hover,
+.kurt-button:hover {
+  transform: scale(1.05);         /* slightly larger */
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)); /* soft glow */
+}
+

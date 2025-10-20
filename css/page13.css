@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Button Styles --- */
+.icon-btn {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Top-left buttons */
+.top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Right-side buttons */
+.right-side {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Character selection (Left Center) */
+.characters-left {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.character-choice {
+  width: 110px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.character-choice.selected {
+  filter: grayscale(100%);
+}
+
+/* Main Character Display (Right Center) */
+.main-character {
+  position: absolute;
+  top: 30%;
+  left: 55%;
+  width: 300px;
+}
+
+.main-character img {
+  width: 100%;
+  height: auto;
+}
+
+/* Bottom buttons */
+.bottom-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+/* Letters mailbox */
+.letters-box {
+  position: absolute;
+  bottom: 10px;
+  right: 40px;
+  width: 200px;
+}
