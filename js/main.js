@@ -151,7 +151,6 @@ function goToScene(sceneNumber) {
       });
     } else if (sceneNumber === 26) {
       changeScene('new_images/26.png', () => {
-        createCrosswordInputs();
       });
     } else if (sceneNumber === 39) {
       changeScene('new_images/39.png', () => {
