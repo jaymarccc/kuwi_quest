@@ -34,7 +34,7 @@ startBtn.addEventListener('click', async () => {
 
 // --- Step 2: First story page (go to 69 per your flow) ---
 function showFirstStoryPage() {
-  goToScene(133);
+  goToScene(2);
 }
 
 // --- Universal Scene Transition ---
